@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout Summary</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Workout Summary</h1>
+    </header>
+
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>Exercise</th>
+                    <th>Total Duration (seconds)</th>
+                    <th>Total Calories Burned</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if summaries %}
+                    {% for summary in summaries %}
+                    <tr>
+                        <td>{{ summary.exercise }}</td>
+                        <td>{{ summary.total_duration_seconds }}</td>
+                        <td>{{ summary.total_calories_burned }}</td>
+                        <td>{{ summary.date }}</td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="4">No workout summaries found.</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>
